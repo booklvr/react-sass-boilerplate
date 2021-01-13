@@ -1,28 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Heebo:300&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300&display=swap");
 * {
   box-sizing: border-box;
 }
 
-html {
-  transition: all 0.5s ease-in;
-}
-html.dark {
-  background-color: #111;
-  color: #000;
-}
-html.dark .hour,
-html.dark .minute,
-html.dark .circle {
-  background-color: white !important;
-}
-html.dark .time,
-html.dark .date {
-  color: white !important;
-}
-
 body {
-  font-family: "Heebo", sans-serif;
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   margin: 0;
 }
@@ -30,102 +12,89 @@ body {
 #root {
   height: 100%;
   width: 100%;
+  background-color: #ecf0f1;
+  font-family: "Roboto", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
   overflow: hidden;
   margin: 0;
 }
 
-.toggle {
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-  border: 0;
-  border-radius: 4px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 100px;
-}
-.toggle:focus {
-  outline: none;
+img {
+  max-width: 100%;
 }
 
-.clock-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+.card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 350px;
 }
-.clock-container .clock {
-  position: relative;
-  width: 200px;
+.card .card-header {
   height: 200px;
 }
-.clock-container .clock .needle {
-  background-color: #000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 65px;
-  width: 3px;
-  transform-origin: bottom center;
-  transition: all 0.5s ease-in;
+.card .card-header img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
-.clock-container .clock .needle.hour {
-  transform: translate(-50%, -100%) rotate(0deg);
+
+.card-content {
+  background-color: #fff;
+  padding: 30px;
 }
-.clock-container .clock .needle.minute {
-  transform: translate(-50%, -100%) rotate(0deg);
-  height: 100px;
+.card-content .card-title {
+  height: 20px;
+  margin: 0;
 }
-.clock-container .clock .needle.second {
-  transform: translate(-50%, -100%) rotate(0deg);
-  height: 100px;
-  background-color: #e74c3c;
+.card-content .card-excerpt {
+  color: #777;
+  margin: 10px 0 20px;
 }
-.clock-container .clock .center-point {
-  background-color: #e74c3c;
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.card-content .author {
+  display: flex;
+}
+.card-content .profile-img {
   border-radius: 50%;
+  overflow: hidden;
+  height: 40px;
+  width: 40px;
 }
-.clock-container .clock .center-point::after {
-  content: "";
-  background-color: #000;
-  width: 5px;
-  height: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
+.card-content .author-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 10px;
+  width: 100px;
 }
-.clock-container .time {
-  font-size: 60px;
-}
-.clock-container .date {
+.card-content .author-info small {
   color: #aaa;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
+  margin-top: 5px;
 }
-.clock-container .date .circle {
-  background-color: #000;
-  color: white;
-  border-radius: 50%;
-  height: 18px;
-  width: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 18px;
-  transition: all 0.5s ease-in;
-  font-size: 12px;
+
+.animated-bg {
+  background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 10%, #f6f7f8 20%, #f6f7f8 100%);
+  background-size: 200% 100%;
+  animation: bgPos 1s linear infinite;
+}
+
+.animated-bg-text {
+  border-radius: 50px;
+  display: inline-block;
+  margin: 0;
+  height: 10px;
+  width: 100%;
+}
+
+@keyframes bgPos {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
 }
 
 /*# sourceMappingURL=/src.7ed060e2.css.map */

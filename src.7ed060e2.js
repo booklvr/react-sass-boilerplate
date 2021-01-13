@@ -29844,7 +29844,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/ThemeClock.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/ContentPlaceholder.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29870,112 +29870,70 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var ThemeClock = function ThemeClock() {
-  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-  var _useState = (0, _react.useState)(''),
+var ContentPlaceholder = function ContentPlaceholder() {
+  var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      month = _useState2[0],
-      setMonth = _useState2[1];
+      loaded = _useState2[0],
+      setLoaded = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(''),
+  var _useState3 = (0, _react.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
-      day = _useState4[0],
-      setDay = _useState4[1];
+      loadedDetails = _useState4[0],
+      setLoadedDetails = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(''),
-      _useState6 = _slicedToArray(_useState5, 2),
-      date = _useState6[0],
-      setDate = _useState6[1];
-
-  var _useState7 = (0, _react.useState)(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      hours = _useState8[0],
-      setHours = _useState8[1]; // const [hoursForClock, setHoursForClock] = useState('')
-
-
-  var _useState9 = (0, _react.useState)(''),
-      _useState10 = _slicedToArray(_useState9, 2),
-      minutes = _useState10[0],
-      setMinutes = _useState10[1];
-
-  var _useState11 = (0, _react.useState)(''),
-      _useState12 = _slicedToArray(_useState11, 2),
-      seconds = _useState12[0],
-      setSeconds = _useState12[1];
-
-  var _useState13 = (0, _react.useState)(''),
-      _useState14 = _slicedToArray(_useState13, 2),
-      amOrPm = _useState14[0],
-      setAmOrPm = _useState14[1];
-
-  var toggleDarkMode = function toggleDarkMode(e) {
-    document.querySelector('html').classList.toggle('dark');
-    e.target.innerHTML = e.target.innerHTML === 'Dark mode' ? 'Light mode' : 'Dark mode';
+  var details = {
+    header_img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80',
+    title: 'this is a title',
+    excerpt: 'this is an excerpt, it is a little longer than the title.',
+    profile_img: 'https://randomuser.me/api/portraits/men/45.jpg',
+    name: 'John Doe',
+    date: 'Oct 08, 2020'
   };
-
-  var scale = function scale(num, in_min, in_max, out_min, out_max) {
-    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-  }; // const [seconds, setSeconds] = useState(0)
-
-
   (0, _react.useEffect)(function () {
-    var interval = setInterval(function () {
-      var time = new Date();
-      setMonth(time.getMonth());
-      setDay(time.getDay());
-      setDate(time.getDate());
-      setHours(time.getHours()); // setHoursForClock()
-
-      setMinutes(time.getMinutes());
-      setSeconds(time.getSeconds());
-      setMonth(time.getMonth());
-      setAmOrPm(hours >= 12 ? 'AM' : 'PM');
+    setTimeout(function () {
+      console.log('loadedDetails', loadedDetails);
+      setLoaded(true);
+      setLoadedDetails(details);
+      console.log('loadedDetails', loadedDetails);
     }, 1000);
-    return function () {
-      return clearInterval(interval);
-    };
   }, []);
-  return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
-    className: "toggle",
-    onClick: function onClick(e) {
-      return toggleDarkMode(e);
-    }
-  }, "Dark mode"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "clock-container"
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "card"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "clock"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "needle hour",
-    style: {
-      transform: "translate(-50%, -100%) rotate(".concat(scale(hours >= 13 ? hours % 12 : hours, 0, 11, 0, 360), "deg)"),
-      transition: "".concat(hours === 0 ? 'none' : 'all 0.5s ease-in')
-    }
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "needle minute",
-    style: {
-      transform: "translate(-50%, -100%) rotate(".concat(scale(minutes, 0, 59, 0, 360), "deg)"),
-      transition: "".concat(minutes === 0 ? 'none' : 'all 0.5s ease-in')
-    }
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "needle second",
-    style: {
-      transform: "translate(-50%, -100%) rotate(".concat(scale(seconds, 0, 59, 0, 360), "deg)"),
-      transition: "".concat(seconds === 0 ? 'none' : 'all 0.5s ease-in')
-    }
-  }), /*#__PURE__*/_react.default.createElement("div", {
-    className: "center-point"
+    className: "card-header animated-bg",
+    id: "header"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: loadedDetails.header_img && loadedDetails.header_img,
+    alt: ""
   })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "time"
-  }, hours >= 13 ? hours % 12 : hours, ":", minutes < 10 ? "0".concat(minutes) : "".concat(minutes, " ").concat(amOrPm)), /*#__PURE__*/_react.default.createElement("div", {
-    className: "date"
-  }, days[day], ", ", months[month], " ", /*#__PURE__*/_react.default.createElement("span", {
-    className: "circle"
-  }, date))));
+    className: "card-content"
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: loaded ? 'card-title' : 'card-title animated-bg animated-bg-text'
+  }, loadedDetails.title && loadedDetails.title, "\xA0"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "card-excerpt",
+    id: "excerpt"
+  }, loaded && loadedDetails.excerpt, "\xA0", /*#__PURE__*/_react.default.createElement("span", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, "\xA0"), /*#__PURE__*/_react.default.createElement("span", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, "\xA0"), /*#__PURE__*/_react.default.createElement("span", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, "\xA0")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "author"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, loaded && /*#__PURE__*/_react.default.createElement("img", {
+    src: loadedDetails.profile_img
+  }), "\xA0"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "author-info"
+  }, /*#__PURE__*/_react.default.createElement("strong", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, loaded && loadedDetails.name, "\xA0"), /*#__PURE__*/_react.default.createElement("small", {
+    className: loaded ? null : 'animated-bg animated-bg-text'
+  }, loaded && loadedDetails.date, "\xA0")))));
 };
 
-var _default = ThemeClock;
+var _default = ContentPlaceholder;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"../src/App.js":[function(require,module,exports) {
 "use strict";
@@ -29987,17 +29945,17 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _ThemeClock = _interopRequireDefault(require("./components/ThemeClock"));
+var _ContentPlaceholder = _interopRequireDefault(require("./components/ContentPlaceholder"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement(_ThemeClock.default, null);
+  return /*#__PURE__*/_react.default.createElement(_ContentPlaceholder.default, null);
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/ThemeClock":"../src/components/ThemeClock.js"}],"../src/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/ContentPlaceholder":"../src/components/ContentPlaceholder.js"}],"../src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -30051,7 +30009,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63324" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
